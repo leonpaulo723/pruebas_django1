@@ -9,7 +9,26 @@
 </head>
 
 <body>
-    <h1>SERVICIOS</h1>
+    <center>
+        <h1>SERVICIOS</h1>
+    </center>
+
+    <lu>
+        <h2>BARBEROS</h2>
+    </lu>
+
+    {%for n in nombre%}
+    <h2>{{n}}</h2>
+
+    {% endfor %}
+
+    <lu>
+        <h2>Nuestros servicios</h2>
+    </lu>
+    {%for s in serv%}
+    <h2>{{s}}</h2>
+    {% endfor %}
+
 
 
 
