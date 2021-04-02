@@ -10,6 +10,13 @@
 
 <body>
     <h1>CONTACTO</h1>
+    <form action="." method="POST">
+        {% csrf_token %} {{ formulario.as_p }}
+
+        <input type="submit" value="guardar">
+    </form>
+
+
 </body>
 
 </html>

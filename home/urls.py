@@ -7,7 +7,7 @@ urlpatterns = [
 
 
 path('equipo/',vista_equipo),
-path('inicio/',vista_inicio),
+path('',vista_inicio),
 path('servicio/',vista_servicio),
 path('productos/',vista_productos),
 path('contacto/',vista_contacto),
