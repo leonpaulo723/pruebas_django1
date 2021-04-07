@@ -1,42 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>servicio</title>
-</head>
-
-<body>
-    <center>
-        <h1>SERVICIOS</h1>
-    </center>
-
-    <lu>
-        <h2>BARBEROS</h2>
-    </lu>
-
-    {%for n in nombre%}
-    <h2>{{n}}</h2>
-
-    {% endfor %}
-
-    <lu>
-        <h2>Nuestros servicios</h2>
-    </lu>
-    {%for s in serv%}
-    <h2>{{s}}</h2>
-    {% endfor %}
+ {% extends 'base.html' %} {% block contenido %}
 
 
+<center>
+    <h1>SERVICIOS</h1>
+</center>
 
+<lu>
+    <h2>BARBEROS</h2>
+</lu>
 
+{%for n in nombre%}
+<h2>{{n}}</h2>
 
+{% endfor %}
 
-
-
-
-</body>
-
-</html>
+<lu>
+    <h2>Nuestros servicios</h2>
+</lu>
+{%for s in serv%}
+<h2>{{s}}</h2>
+{% endfor %} {% endblock %}

@@ -16,6 +16,8 @@ path('inicio_sesion/',vista_inicio_sesion),
 path('solicitar_cita/',vista_solicitar_cita),
 
 
-
+#path('agregar_barbero/',vista_agregar_barbero,name='agregar_barbero')
 
 ]
+
+
