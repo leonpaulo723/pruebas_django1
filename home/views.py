@@ -1,14 +1,13 @@
 
 from django.http import request
 from django.shortcuts import redirect, render
-from .models import Barbero
+from .models import *
 from .forms import *
 
 # Create your views here.
 
 
-def vista_equipo(request):
-    return render(request, 'equipo.html')
+
 
 
 def vista_inicio(request):
@@ -22,8 +21,7 @@ def vista_servicio(request):  # traer informacion de la base datos, consultas
     return render(request, 'servicio.html', locals())
 
 
-def vista_productos(request):
-    return render(request, 'productos.html')
+
 
 
 def vista_contacto(request):
@@ -46,15 +44,12 @@ def vista_contacto(request):
         
     return render(request,'contacto.html', locals())
 
-def vista_registro(request):
-    return render(request,'registro.html')
+
 
 
 def vista_inicio_sesion(request):
     return render(request,'inicio_sesion.html')
 
-def vista_solicitar_cita(request):
-    return render(request,'solicitar_cita.html')
 
 # vistas barbero
 def listar_barbero (request):
@@ -75,9 +70,9 @@ def agregar_barbero (request):
     return render(request, 'agregar_barbero.html',locals())
 
 
-def editar_barbero (request, id_br):
+def editar_barbero (request, id_Barbero):
 
-    var1 = Barbero.objects.get(id=id_br)
+    var1 = Barbero.objects.get(id=id_Barbero)
     if request.method == "POST":
         formulario = agregar_barbero_form(request.POST, request.FILES, instance=var1)
         if formulario.is_valid():
@@ -92,6 +87,34 @@ def editar_barbero (request, id_br):
 def eliminar_barbero (request):
     
     return render(request, 'eliminar_barbero.html',locals())
+
+
+def ver_barbero (request, id_Barbero):
+
+    b = Barbero.objects.get(id=id_Barbero)
+    
+    return render(request, 'ver_barbero.html',locals())
+
+
+
+def listar_servicios (request):
+    lista = Servicio.objects.filter()
+    return render(request, 'listar_servicios.html',locals())
+
+
+def agregar_servicios (request):
+    if request.method == 'POST':
+        formulario = agregar_servicio_form(request.POST, request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('/listar_servicios/')
+            
+    else:
+        formulario = agregar_servicio_form()
+    
+    return render(request, 'agregar_servicios.html',locals())
+
+
 
 
 
