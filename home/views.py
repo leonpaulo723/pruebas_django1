@@ -1,5 +1,7 @@
+
 from django.http import request
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from .models import Barbero
 from .forms import *
 
 # Create your views here.
@@ -54,8 +56,42 @@ def vista_inicio_sesion(request):
 def vista_solicitar_cita(request):
     return render(request,'solicitar_cita.html')
 
-        
+# vistas barbero
+def listar_barbero (request):
+    lista = Barbero.objects.filter()
+    return render(request, 'listar_barbero.html',locals())
+
+
+def agregar_barbero (request):
+    if request.method == 'POST':
+        formulario = agregar_barbero_form(request.POST, request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('/listar_barbero/')
+            
+    else:
+        formulario = agregar_barbero_form()
+
+    return render(request, 'agregar_barbero.html',locals())
+
+
+def editar_barbero (request, id_br):
+
+    var1 = Barbero.objects.get(id=id_br)
+    if request.method == "POST":
+        formulario = agregar_barbero_form(request.POST, request.FILES, instance=var1)
+        if formulario.is_valid():
+            var1 = formulario.save()
+            return redirect ('/listar_barbero/')
+    else:
+        formulario = agregar_barbero_form(instance = var1)
+
+    return render(request, 'editar_barbero.html',locals())
+
+
+def eliminar_barbero (request):
     
+    return render(request, 'eliminar_barbero.html',locals())
 
 
 

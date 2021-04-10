@@ -1,0 +1,11 @@
+{% extends 'base.html' %} {% block contenido %}
+
+<center>
+    <h1>LISTAR BARBERO</h1>
+</center>
+
+
+{{lista}} {%for p in lista%}
+<h2>{{p}}</h2>
+
+{% endfor %} {% endblock %}
