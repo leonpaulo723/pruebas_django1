@@ -1,12 +1,12 @@
 {% extends 'base.html' %} {% block contenido %}
 
 <center>
-    <h1>EDITAR_BARBERO</h1>
+    <h1>EDITAR_SERVICIO</h1>
 </center>
 
 
 <form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %} {{ formulario.as_p}}
+    {% csrf_token %} {{ form_serv.as_p}}
 
     <input type="submit" value="editar">
 

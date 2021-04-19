@@ -21,7 +21,7 @@ class agregar_servicio_form(forms.ModelForm):
      class Meta:
          model = Servicio
          fields = '__all__'
-         fields = ['nombre','descripcion','precio']
+         #fields = ['nombre','descripcion','precio']
 
 
          

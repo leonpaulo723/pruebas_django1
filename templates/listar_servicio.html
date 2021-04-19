@@ -4,6 +4,17 @@
 </center>
 
 {{lista}} {%for p in lista%}
-<h2>{{p}}</h2>
+<p>{{p}}
+
+    <a href="{% url 'editar_servicio' id_br=p.id %}">EDITAR</a>
+    <a href="{% url 'eliminar_servicio' id_br=p.id %}">ELIMINAR</a>
+
+
+
+
+
+
+
+</p>
 
 {% endfor %} {% endblock %}

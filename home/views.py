@@ -70,9 +70,9 @@ def agregar_barbero (request):
     return render(request, 'agregar_barbero.html',locals())
 
 
-def editar_barbero (request, id_Barbero):
+def editar_barbero (request, id_br):
 
-    var1 = Barbero.objects.get(id=id_Barbero)
+    var1 = Barbero.objects.get(id=id_br)
     if request.method == "POST":
         formulario = agregar_barbero_form(request.POST, request.FILES, instance=var1)
         if formulario.is_valid():
@@ -84,9 +84,12 @@ def editar_barbero (request, id_Barbero):
     return render(request, 'editar_barbero.html',locals())
 
 
-def eliminar_barbero (request):
-    
-    return render(request, 'eliminar_barbero.html',locals())
+def eliminar_barbero (request, id_br):
+    var2 = Barbero.objects.get(id=id_br)
+    var2.delete()
+    return redirect ('/listar_barbero/')
+
+    #return render(request, 'eliminar_barbero.html',locals())
 
 
 def ver_barbero (request, id_Barbero):
@@ -97,24 +100,41 @@ def ver_barbero (request, id_Barbero):
 
 
 
-def listar_servicios (request):
+def listar_servicio (request):
     lista = Servicio.objects.filter()
-    return render(request, 'listar_servicios.html',locals())
+    return render(request, 'listar_servicio.html',locals())
 
 
-def agregar_servicios (request):
+def agregar_servicio (request):
     if request.method == 'POST':
-        formulario = agregar_servicio_form(request.POST, request.FILES)
-        if formulario.is_valid():
-            formulario.save()
-            return redirect('/listar_servicios/')
+        form_serv = agregar_servicio_form(request.POST, request.FILES)
+        if form_serv.is_valid():
+            form_serv.save()
+            return redirect('/listar_servicio/')
             
     else:
         formulario = agregar_servicio_form()
     
-    return render(request, 'agregar_servicios.html',locals())
+    return render(request, 'agregar_servicio.html',locals())
+
+def editar_servicio (request, id_br):
+
+    var3 = Servicio.objects.get(id=id_br)
+    if request.method == "POST":
+        form_serv = agregar_servicio_form(request.POST, request.FILES, instance=var3)
+        if form_serv.is_valid():
+            var3 = form_serv.save()
+            return redirect ('/listar_servicio/')
+    else:
+        form_serv = agregar_servicio_form(instance = var3)
+
+    return render(request, 'editar_servicio.html',locals())
 
 
+def eliminar_servicio (request, id_br):
+    var2 = Servicio.objects.get(id=id_br)
+    var2.delete()
+    return redirect ('/listar_servicio/')
 
 
 
