@@ -24,4 +24,11 @@ class agregar_servicio_form(forms.ModelForm):
          #fields = ['nombre','descripcion','precio']
 
 
-         
+class agregar_cita_form(forms.ModelForm):
+    class Meta:
+        model = Cita
+        fields = '__all__'
+        #fields = ['fecha','hora','jornada']
+
+
+

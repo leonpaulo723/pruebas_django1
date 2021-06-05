@@ -4,6 +4,7 @@ from django.shortcuts import redirect, render
 from .models import *
 from .forms import *
 
+
 # Create your views here.
 
 
@@ -14,11 +15,11 @@ def vista_inicio(request):
     return render(request, 'inicio.html')
 
 
-def vista_servicio(request):  # traer informacion de la base datos, consultas
+#def vista_servicio(request):  # traer informacion de la base datos, consultas
 
-    nombre = ["mateo Barber", "alex Barber"]
-    serv = ["corte clasico", "limpieza facial", "barba", "coloracion"]
-    return render(request, 'servicio.html', locals())
+    #nombre = ["mateo Barber", "alex Barber"]
+    #serv = ["corte clasico", "limpieza facial", "barba", "coloracion"]
+    #return render(request, 'servicio.html', locals())
 
 
 
@@ -49,6 +50,9 @@ def vista_contacto(request):
 
 def vista_inicio_sesion(request):
     return render(request,'inicio_sesion.html')
+
+def vista_nosotros(request):
+    return render (request,'nosotros.html')
 
 
 # vistas barbero
@@ -99,7 +103,7 @@ def ver_barbero (request, id_Barbero):
     return render(request, 'ver_barbero.html',locals())
 
 
-
+#vistas servicios
 def listar_servicio (request):
     lista = Servicio.objects.filter()
     return render(request, 'listar_servicio.html',locals())
@@ -139,3 +143,15 @@ def eliminar_servicio (request, id_br):
 
 
     
+#vistas CLientes
+def agendar_cita (request):
+    if request.method == 'POST':
+        form_cita = agregar_cita_form(request.POST, request.FILES)
+        if form_cita.is_valid():
+            form_cita.save()
+            return redirect('/listar_servicio/')
+            
+    else:
+        formulario = agregar_cita_form()
+
+    return render(request, 'crear_cita.html',locals())

@@ -3,16 +3,19 @@ from .views import *
 
 
 
+
 urlpatterns = [
 
 
 
 path('',vista_inicio),
-path('servicio/',vista_servicio),
+#path('servicio/',vista_servicio),
 
 path('contacto/',vista_contacto),
 
 path('inicio_sesion/',vista_inicio_sesion),
+
+path('nosotros/',vista_nosotros),
 
 
 #barbero
@@ -29,6 +32,11 @@ path('listar_servicio/',listar_servicio, name='listar_servicio'),
 path('agregar_servicio/',agregar_servicio, name='agregar_servicio'),
 path('editar_servicio/<int:id_br>/',editar_servicio, name='editar_servicio'),
 path('eliminar_servicio/<int:id_br>/',eliminar_servicio, name='eliminar_servicio'),
+
+
+
+#CLIENTE
+path('crear_cita/',agendar_cita, name='crear_cita'),
 
 
 
