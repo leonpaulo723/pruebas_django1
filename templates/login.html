@@ -1,26 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
-</head>
-
-<body>
-
-
-    <form action="" method="POST">
-        {% csrf_token %} {{formulario.as_p}}
-        <input type="submit" value="login">
-
-
-    </form>
+{% extends 'base.html' %} {% block contenido %}
 
 
 
+<!-- slide section -->
+{% load static %}
+<section class="" data-stellar-background-ratio="0.5" style="background-color: black">
+    <div class="">
+        <img src="{% static '/images/banner.jpg' %}" alt="" height="" width="100%">
+        <div class="row align-items-center site-hero-inner justify-content-center">
+            <div class="col-md-8 text-center">
+                <div class="mb-5 element-animate">
+                    <!-- <img src="images/banner_text_1.png" alt="Image placeholder" class="img-md-fluid"> -->
+                    <h1 class="mb-4" style="color:white">Iniciar Sesiòn</h1>
+                    <p class="lead"></p>
+                </div>
 
-</body>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END section -->
+<hr>
+<div class="row align-items-center site-hero-inner justify-content-center">
+    <div class="col-md-8 text-center">
 
-</html>
+        <form action="." method="POST">
+            {% csrf_token %} {{form.as_p}}
+            <input type="submit" value="login">
+        </form>
+    </div>
+</div>
+
+
+{% endblock contenido %}

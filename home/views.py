@@ -1,9 +1,9 @@
 
 from django.http import request
 from django.shortcuts import redirect, render
+from django.contrib.auth import login, logout, authenticate
 from .models import *
 from .forms import *
-from django.contrib.auth import login, logout, authenticate
 
 # Create your views here.
 
@@ -12,8 +12,13 @@ from django.contrib.auth import login, logout, authenticate
 
 
 def vista_inicio(request):
-    return render(request, 'inicio.html')
+    productos = Producto.objects.filter(estado=True).order_by('-id')
+    servicios = Servicio.objects.filter().order_by('-id')
+    return render(request, 'index.html', locals())
 
+def vista_servicios(request):
+    servicios = Servicio.objects.filter()
+    return render (request,'servicios.html', locals())
 
 #def vista_servicio(request):  # traer informacion de la base datos, consultas
 
@@ -29,8 +34,6 @@ def vista_inicio_sesion(request):
 def vista_equipo(request):
     return render (request,'equipo.html')
 
-def vista_servicios(request):
-    return render (request,'servicios.html')
 
 def vista_agenda(request):
     return render (request,'agenda.html')
@@ -48,7 +51,7 @@ def vista_registrate(request):
 
 # vistas barbero
 def listar_barbero (request):
-    lista = Barbero.objects.filter()
+    lista = Barbero.objects.filter().order_by('-id')
     return render(request, 'listar_barbero.html',locals())
 
 
@@ -154,26 +157,22 @@ def vista_login (request):
     usu = ""
     cla = ""
     if request.method == "POST":
-        formulario = login_form(request.POST)
-        if formulario.is_valid():
-            usu = formulario.cleaned_data['usuario']
-            cla = formulario.cleaned_data['clave']
+        form = login_form(request.POST)
+        if form.is_valid():
+            usu = form.cleaned_data['usuario']
+            cla = form.cleaned_data['clave']
             usuario = authenticate(username=usu, password=cla)
             if usuario is not None and usuario.is_active:
                 login(request, usuario)
                 return redirect('/')
             else:
                 msj = "usuario o clave incorrectos"
-
-        formulario = login_form()
-        return render(request, 'login.html', locals())
+    form = login_form()
+    return render(request, 'login.html', locals())
 
 
 def vista_logout (request):
     logout(request)
     return redirect('/login/')
 
-
-def vista_login(request):
-    return render (request,'login.html')
 

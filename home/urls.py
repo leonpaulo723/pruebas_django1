@@ -8,32 +8,18 @@ urlpatterns = [
 
 
 
-path('',vista_inicio),
+path('',vista_inicio, name='inicio'),
+path('servicios/', vista_servicios, name = 'servicios'),
 
-
-
-path('inicio_sesion/',vista_inicio_sesion),
-
-path('equipo/',vista_equipo),
-
-path('servicios/', vista_servicios),
+#login
+path('login/',vista_login, name='vista_login'),
+path('logout/',vista_logout, name='vista_logout'),
+path('registrate/', vista_registrate),
 
 path('agenda/', vista_agenda),
 
-path('login/', vista_login),
-
-path('index/', vista_index),
-
-path('registrate/', vista_registrate),
-
-
-
-
-
-
-
 #barbero
-path('listar_barbero/',listar_barbero, name='listar_barbero'),
+path('equipo/',listar_barbero, name='listar_barbero'),
 path('agregar_barbero/',agregar_barbero, name='agregar_barbero'),
 path('editar_barbero/<int:id_br>/',editar_barbero, name='editar_barbero'),
 path('eliminar_barbero/<int:id_br>/',eliminar_barbero, name='eliminar_barbero'),
@@ -52,9 +38,6 @@ path('eliminar_servicio/<int:id_br>/',eliminar_servicio, name='eliminar_servicio
 #CLIENTE
 path('crear_cita/',agendar_cita, name='crear_cita'),
 
-#login
-path('login/',vista_login, name='vista_login'),
-path('logout/',vista_logout, name='vista_logout'),
 
 
 ]

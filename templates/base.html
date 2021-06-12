@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 
@@ -65,15 +66,26 @@
 
 
                         <li class="nav-item">
+
+                            {% if request.user.is_authenticated %}
+                            <a class="nav-link" href="/logout/">Logout</a> {% else %}
                             <a class="nav-link" href="/login/">Login</a>
-                        </li>
 
+
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/registrate/">Registrate</a>
+                            {% if request.user.is_authenticated %}
+                            <div class="nav-link">
+                                {{request.user}}
+                            </div>
+                            {% endif %}
                         </li>
-
-
+                        {% if request.user.is_authenticated is False %}
+                        <li>
+                            <a class="nav-link" href="/registrate/">Registrate</a> {% endif %}
                         </li>
+                        {% endif %}
+
                     </ul>
 
                 </div>
@@ -83,278 +95,9 @@
     <!-- END header -->
 
 
-
-    <!-- slide section -->
-    <section class="site-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(/static/images/big_image_1.jpg);">
-        <div class="container">
-            <div class="row align-items-center site-hero-inner justify-content-center">
-                <div class="col-md-8 text-center">
-
-                    <div class="mb-5 element-animate">
-                        <img src="/static/images/BARBER_TOKYO_2.png" alt="welcome" class="img-md-fluid">
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- END section -->
-
-    <!-- INFO_section -->
-    <section class="quick-info element-animate" data-animate-effect="fadeInLeft">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 bgcolor">
-                    <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <div class="media">
-                                <div class="mr-3 icon-wrap"><span class="icon ion-ios-telephone"></span></div>
-                                <div class="media-body">
-                                    <h5>3162847373</h5>
-                                    <p></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="media">
-                                <div class="mr-3 icon-wrap"><span class="icon ion-location"></span></div>
-                                <div class="media-body">
-                                    <h5>Calle 25N #5-48</h5>
-                                    <h5>Popayan,Colombia</h5>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="media">
-                                <div class="mr-3 icon-wrap"><span class="icon ion-android-time"></span></div>
-                                <div class="media-body">
-                                    <h5>Horario de atencion</h5>
-                                    <h5>lunes a domingo <br>9:00am a 8:00pm</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- END section -->
+    {% block contenido %} {% endblock contenido %}
 
 
-
-
-    <!-- SERVICIOS section -->
-    <section class="site-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 pr-5">
-
-                    <h2 class="mb-3">Servicios</h2>
-                    <p class="mb-5">En nuestra Barberia encontraras los mejores servicios en cortes clasicos y modernos, diseño de barba cejas, tambien tenemos servicio de limpieza facial y coloracion como nuevas tendencias. </p>
-
-                    <div class="mb-3 custom-nav">
-                        <a href="#" class="btn btn-primary btn-sm custom-prev mr-2 mb-2"><span class="ion-android-arrow-back"></span></a>
-                        <a href="#" class="btn btn-primary btn-sm custom-next mr-2 mb-2"><span class="ion-android-arrow-forward"></span></a>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="row">
-                        <div class="col-md-12 slider-wrap">
-                            <div class="owl-carousel owl-theme no-nav js-carousel-1">
-
-                                <a href="/servicios/" class="img-bg" style="background-image: url(/static/images/img_2.jpg)">
-                                    <div class="text">
-                                        <span class="icon custom-icon flaticon-hair-comb"></span>
-                                        <h2>Corte Clasico</h2>
-                                        <p>Selecciona</p>
-                                    </div>
-                                </a>
-
-                                <a href="/servicios/" class="img-bg" style="background-image: url(/static/images/img_1.jpg)">
-                                    <div class="text">
-                                        <span class="icon custom-icon flaticon-moustache"></span>
-                                        <h2>Diseño Barba</h2>
-                                        <p>Selecciona</p>
-                                    </div>
-                                </a>
-
-                                <a href="/servicios/" class="img-bg last" style="background-image: url(/static/images/cejas.jpg)">
-                                    <div class="text">
-                                        <span class="icon custom-icon flaticon-razor-1"></span>
-                                        <h2>Diseño cejas </h2>
-                                        <p>Selecciona</p>
-                                    </div>
-                                </a>
-
-                                <a href="/servicios/" class="img-bg" style="background-image: url(/static/images/facial_1.jpg)">
-                                    <div class="text">
-                                        <span class="icon custom-icon flaticon-cream"></span>
-                                        <h2>limpieza facial</h2>
-                                        <p>Selecciona</p>
-                                    </div>
-                                </a>
-
-                                <a href="/servicios/" class="img-bg" style="background-image: url(/static/images/coloracion.jpg)">
-                                    <div class="text">
-                                        <span class="icon custom-icon flaticon-hair-dryer"></span>
-                                        <h2>Coloracion</h2>
-                                        <p>Selecciona</p>
-                                    </div>
-                                </a>
-                                <a href="/servicios/" class="img-bg" style="background-image: url(/static/images/barba_3.jpg)">
-                                    <div class="text">
-                                        <span class="icon custom-icon flaticon-cream"></span>
-                                        <h2>Coloracion Barba</h2>
-                                        <p>Selecciona</p>
-                                    </div>
-                                </a>
-
-
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- END section -->
-
-    <section class="section-cover cta" data-stellar-background-ratio="0.5" style="background-image: url(/static/images/wall1.jpg);">
-        <div class="container">
-            <div class="row justify-content-center align-items-center intro">
-                <div class="col-md-8 text-center element-animate">
-                    <h2 class="mb-3"><span>Encuentra las mejores marcas para el cuidado de tu cabello y barba</span></h2>
-                    <!--<p><a href="/agenda/" class="btn btn-black">Agenda tu cita</a></p>-->
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- END section -->
-
-
-
-    <!-- PRODUCTOS section -->
-    <section class="site-section">
-        <div class="container">
-            <div class="row justify-content-center mb-5">
-                <div class="col-md-7 text-center">
-                    <h2>PRODUCTOS</h2>
-                    <p>Contamos con una gran variedad de productos especializados para el cuidado del cabello y barba. Marcas como Rolda, Karicia, Reuzel. Somos distribuidores exclusivos.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-
-                    <div class="media d-block media-feature text-center">
-                        <div class="mr-3 icon-wrap">
-                            <img src="/static/images/prod_1.jpg" class="media-body" alt="Random Name" style="width:85%">
-                        </div>
-                        <div class="media-body">
-                            <h3>Kit Rolda Barba</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, assumenda rem nulla odio iure animi repellat voluptates ullam omnis enim?</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-md-4">
-                    <div class="media d-block media-feature text-center">
-                        <div class="mr-3 icon-wrap">
-                            <img src="/static/images/prod_2.jpg" class="media-body" alt="Random Name" style="width:60%">
-                        </div>
-                        <div class="media-body">
-                            <h3>Kit Wild man cuidado capilar</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, assumenda rem nulla odio iure animi repellat voluptates ullam omnis enim?</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="media d-block media-feature text-center">
-                        <div class="mr-3 icon-wrap">
-                            <img src="/static/images/prod_3.jpg" class="media-body" alt="Random Name" style="width:60%">
-                        </div>
-                        <div class="media-body">
-                            <h3>Cera Reuzel</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, assumenda rem nulla odio iure animi repellat voluptates ullam omnis enim?</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4">
-
-                    <div class="media d-block media-feature text-center">
-                        <div class="mr-3 icon-wrap">
-                            <img src="/static/images/prod_4.jpg" class="media-body" alt="Random Name" style="width:60%">
-                        </div>
-                        <div class="media-body">
-                            <h3>Cera Moldeadora parx´s</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, assumenda rem nulla odio iure animi repellat voluptates ullam omnis enim?</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-md-4">
-                    <div class="media d-block media-feature text-center">
-                        <div class="mr-3 icon-wrap">
-                            <img src="/static/images/prod_5.jpg" class="media-body" alt="Random Name" style="width:80%">
-                        </div>
-                        <div class="media-body">
-                            <h3>Tonico Barba Larga</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, assumenda rem nulla odio iure animi repellat voluptates ullam omnis enim?</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="media d-block media-feature text-center">
-                        <div class="mr-3 icon-wrap">
-                            <img src="/static/images/prod_6.jpg" class="media-body" alt="Random Name" style="width:70%">
-                        </div>
-                        <div class="media-body">
-                            <h3>Gel moldeador Rolda</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, assumenda rem nulla odio iure animi repellat voluptates ullam omnis enim?</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- END section -->
-
-    <section class="section-cover cta" data-stellar-background-ratio="0.5" style="background-image: url(/static/images/big_image_2.jpg);">
-        <div class="container">
-            <div class="row justify-content-center align-items-center intro">
-                <div class="col-md-8 text-center element-animate">
-                    <h2 class="mb-4"><span>OFERTA ESPECIAL MARTES Y MIERCOLES</span> 25% en nuestros servicios de cortes basicos</h2>
-                    <p><a href="/agenda/" class="btn btn-black">Agenda tu cita</a></p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- END section -->
-
-    <section class="site-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 video-wrap mb-5">
-                    <img src="/static/images/img_5.jpg" alt="Image placeholder" class="img-fluid">
-                    <a href="https://vimeo.com/397292106" class="popup-vimeo btn-video"><span class="fa fa-play"></span></a>
-                </div>
-                <div class="col-md-6 pl-md-5">
-                    <h3>"Siempre es un buen momento para un cambio de look"</h3>
-                    <p class="lead">Start with us today</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam facere a excepturi quod impedit rerum ipsum totam incidunt, necessitatibus id veritatis maiores quos saepe dolore commodi magnam fugiat. Incidunt, omnis.</p>
-                    <p>Nobis quae eaque facere architecto eligendi, voluptas quasi, blanditiis aperiam possimus inventore quis nam! Cupiditate necessitatibus, voluptatem excepturi placeat exercitationem quos vitae ut vero dolorem, provident sit odio porro
-                        facere.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- END section -->
 
 
     <!-- Footer Section -->

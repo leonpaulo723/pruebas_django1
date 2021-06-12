@@ -14,7 +14,7 @@ class agregar_barbero_form(forms.ModelForm):
     class Meta:
         model = Barbero
         fields = '__all__'
-        fields = ['nombre','apellido', 'alias', 'foto']
+        
 
 
 class agregar_servicio_form(forms.ModelForm):
@@ -31,7 +31,7 @@ class agregar_cita_form(forms.ModelForm):
         #fields = ['fecha','hora','jornada']
 
 
-class login_form (forms.ModelForm):
+class login_form (forms.Form):
     usuario = forms.CharField(widget=forms.TextInput())
     clave = forms.CharField(widget=forms.PasswordInput(render_value=False))
 

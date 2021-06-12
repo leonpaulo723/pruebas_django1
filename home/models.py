@@ -9,6 +9,7 @@ class Producto(models.Model):
     marca = models.CharField(max_length=150)
     precio = models.DecimalField(max_digits=6, decimal_places=2)
     estado = models.BooleanField(default=True)
+    foto = models.ImageField(upload_to = 'productos', null=True, blank=True )
     
     def __str__(self):
         return self.nombre
@@ -25,8 +26,7 @@ class Persona(models.Model):
 
 class Barbero(models.Model):
     nombre = models.CharField(max_length=400)
-    apellido = models.CharField(max_length=400)
-    alias = models.CharField(max_length=150, null=True, blank=True)
+    descripcion = models.TextField(max_length=5000)
     foto = models.ImageField(upload_to = 'barberos', null=True, blank=True)
 
     def __str__(self):
@@ -34,8 +34,11 @@ class Barbero(models.Model):
 
 class Servicio(models.Model):
     nombre = models.CharField(max_length=400)
-    descripcion = models.TextField(max_length=500)
+    descripcion = models.TextField(max_length=5000)
+    tiempo = models.CharField(max_length=100)
     precio = models.DecimalField(max_digits=6, decimal_places=2)
+    icono = models.CharField(max_length=100, null=True, blank=True)
+    foto = models.ImageField(upload_to = 'servicios', null=True, blank=True)
     
     def __str__(self):
         return self.nombre
