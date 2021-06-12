@@ -9,13 +9,27 @@ urlpatterns = [
 
 
 path('',vista_inicio),
-#path('servicio/',vista_servicio),
 
-path('contacto/',vista_contacto),
+
 
 path('inicio_sesion/',vista_inicio_sesion),
 
-path('nosotros/',vista_nosotros),
+path('equipo/',vista_equipo),
+
+path('servicios/', vista_servicios),
+
+path('agenda/', vista_agenda),
+
+path('login/', vista_login),
+
+path('index/', vista_index),
+
+path('registrate/', vista_registrate),
+
+
+
+
+
 
 
 #barbero
@@ -38,6 +52,9 @@ path('eliminar_servicio/<int:id_br>/',eliminar_servicio, name='eliminar_servicio
 #CLIENTE
 path('crear_cita/',agendar_cita, name='crear_cita'),
 
+#login
+path('login/',vista_login, name='vista_login'),
+path('logout/',vista_logout, name='vista_logout'),
 
 
 ]

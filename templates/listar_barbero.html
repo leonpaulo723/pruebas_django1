@@ -1,17 +1,24 @@
-{% extends 'base.html' %} {% block contenido %}
+<!DOCTYPE html>
+<html lang="en">
 
-<center>
-    <h1>LISTAR BARBERO</h1>
-</center>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <center>
+        <h2>LISTAR BARBERO</h2>
+    </center>
 
 
-{{lista}} {%for p in lista%}
-<p>{{p}}
-    <a href="{% url 'editar_barbero' id_br=p.id %}">EDITAR</a>
-    <a href="{% url 'eliminar_barbero' id_br=p.id %}">ELIMINAR</a>
-</p>
+    {{lista}} {%for p in lista%}
+    <p>{{p}}
+        <a href="{% url 'editar_barbero' id_br=p.id %}">EDITAR</a>
+        <a href="{% url 'eliminar_barbero' id_br=p.id %}">ELIMINAR</a>
+    </p>
+</body>
 
-
-
-
-{% endfor %} {% endblock %}
+</html>

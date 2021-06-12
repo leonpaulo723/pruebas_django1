@@ -31,4 +31,10 @@ class agregar_cita_form(forms.ModelForm):
         #fields = ['fecha','hora','jornada']
 
 
+class login_form (forms.ModelForm):
+    usuario = forms.CharField(widget=forms.TextInput())
+    clave = forms.CharField(widget=forms.PasswordInput(render_value=False))
+
+
+
 

@@ -1,14 +1,26 @@
-{% extends 'base.html' %} {% block contenido %}
+<!DOCTYPE html>
+<html lang="en">
 
-<center>
-    <h1>AGREGAR_BARBERO</h1>
-</center>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
 
-<form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %} {{ formulario.as_p}}
+<body>
+    <center>
+        <h2>AGREGAR_BARBERO</h2>
+    </center>
 
-    <input type="submit" value="guardar">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %} {{ formulario.as_p}}
 
-</form>
+        <input type="submit" value="guardar">
 
-{% endblock contenido %}
+    </form>
+
+
+</body>
+
+</html>

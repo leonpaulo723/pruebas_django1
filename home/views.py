@@ -3,7 +3,7 @@ from django.http import request
 from django.shortcuts import redirect, render
 from .models import *
 from .forms import *
-
+from django.contrib.auth import login, logout, authenticate
 
 # Create your views here.
 
@@ -23,36 +23,27 @@ def vista_inicio(request):
 
 
 
-
-
-def vista_contacto(request):
-    info_enviado=False
-    mail = ""
-    subj = ""
-    text = ""
-
-    if request.method == "POST":
-        formulario = contacto_form (request.POST)
-        if formulario.is_valid():
-            info_enviado=True
-            mail = formulario.clean_data['Correo']
-            subj = formulario.clean_data['asunto']
-            text = formulario.clean_data['texto']
-
-        
-            
-    formulario = contacto_form()
-        
-    return render(request,'contacto.html', locals())
-
-
-
-
 def vista_inicio_sesion(request):
     return render(request,'inicio_sesion.html')
 
-def vista_nosotros(request):
-    return render (request,'nosotros.html')
+def vista_equipo(request):
+    return render (request,'equipo.html')
+
+def vista_servicios(request):
+    return render (request,'servicios.html')
+
+def vista_agenda(request):
+    return render (request,'agenda.html')
+
+def vista_index(request):
+    return render (request,'index.html')
+
+def vista_registrate(request):
+    return render (request,'registrate.html')
+
+
+
+
 
 
 # vistas barbero
@@ -155,3 +146,34 @@ def agendar_cita (request):
         formulario = agregar_cita_form()
 
     return render(request, 'crear_cita.html',locals())
+
+
+
+#vista login
+def vista_login (request):
+    usu = ""
+    cla = ""
+    if request.method == "POST":
+        formulario = login_form(request.POST)
+        if formulario.is_valid():
+            usu = formulario.cleaned_data['usuario']
+            cla = formulario.cleaned_data['clave']
+            usuario = authenticate(username=usu, password=cla)
+            if usuario is not None and usuario.is_active:
+                login(request, usuario)
+                return redirect('/')
+            else:
+                msj = "usuario o clave incorrectos"
+
+        formulario = login_form()
+        return render(request, 'login.html', locals())
+
+
+def vista_logout (request):
+    logout(request)
+    return redirect('/login/')
+
+
+def vista_login(request):
+    return render (request,'login.html')
+
