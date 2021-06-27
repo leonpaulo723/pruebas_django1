@@ -1,23 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
+ {% extends 'base.html' %} {% block contenido %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<!-- slide section -->
+{% load static %}
+<section class="" data-stellar-background-ratio="0.5" style="background-color: black">
+    <div class="">
+        <img src="{% static '/images/banner.jpg' %}" alt="" height="" width="100%">
+        <div class="row align-items-center site-hero-inner justify-content-center">
+            <div class="col-md-8 text-center">
+                <div class="mb-5 element-animate">
+                    <!-- <img src="images/banner_text_1.png" alt="Image placeholder" class="img-md-fluid"> -->
+                    <h1 class="mb-4" style="color:white">Agregar_Servicio</h1>
+                    <p class="lead"></p>
+                </div>
 
-<body>
-    <center>
-        <h2>AGREGAR SERVICIO</h2>
-    </center>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END section -->
 
-    <form action="" method="POST" enctype="multipart/form-data">
-        {% csrf_token %} {{ formulario.as_p}}
+<br>
+<div class="row align-items-center site-hero-inner justify-content-center">
+    <div class="col-md-8 text-center">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %} {{ formulario.as_p}}
+            <input type="submit" value="guardar">
+        </form>
+    </div>
+</div>
 
-        <input type="submit" value="guardar">
-    </form>
-</body>
 
-</html>
+
+{% endblock contenido %}

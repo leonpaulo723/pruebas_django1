@@ -1,13 +1,29 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+#tupla
+horarios = (
+    ("8:00 - 9:00", "8:00 - 9:00"),
+    ("9:00 - 10:00", "9:00 - 10:00"),
+    ("10:00 - 11:00", "10:00 - 11:00"),
+    ("11:00 - 12:00", "11:00 - 12:00"),
+    ("12:00 - 13:00", "12:00 - 13:00"),
+    ("13:00 - 14:00", "13:00 - 14:00"),
+    ("14:00 - 15:00", "14:00 - 15:00"),
+    ("15:00 - 16:00", "15:00 - 16:00"),
+    ("16:00 - 17:00", "16:00 - 17:00"),
+    ("17:00 - 18:00", "17:00 - 18:00"),
+    ("18:00 - 19:00", "18:00 - 19:00"),
+    ("19:00 - 20:00", "19:00 - 20:00"),
+)
+
 
 # Create your models here.
 class Producto(models.Model):
-    nombre = models.CharField(max_length=200)
-    descripcion = models.TextField(max_length=500)
-    marca = models.CharField(max_length=150)
-    precio = models.DecimalField(max_digits=6, decimal_places=2)
+    nombre = models.CharField(max_length=30)
+    descripcion = models.TextField(max_length=150)
+    marca = models.CharField(max_length=20)
+    precio = models.DecimalField(max_digits=8, decimal_places=2)
     estado = models.BooleanField(default=True)
     foto = models.ImageField(upload_to = 'productos', null=True, blank=True )
     
@@ -15,11 +31,12 @@ class Producto(models.Model):
         return self.nombre
 
 class Persona(models.Model):
+    
     cedula = models.IntegerField()
-    correo = models.EmailField(max_length=400)
-    telefono = models.IntegerField()
+    correo = models.EmailField(max_length=40)
+    telefono = models.CharField(max_length=15)
     foto = models.ImageField(upload_to = 'clientes', null=True, blank=True)
-    user = models.OneToOneField(User, on_delete = models.PROTECT,default=True)
+    user = models.OneToOneField(User, models.PROTECT)
 
     def __str__(self):
         return str(self.cedula)
@@ -36,7 +53,7 @@ class Servicio(models.Model):
     nombre = models.CharField(max_length=400)
     descripcion = models.TextField(max_length=5000)
     tiempo = models.CharField(max_length=100)
-    precio = models.DecimalField(max_digits=6, decimal_places=2)
+    precio = models.DecimalField(max_digits=8, decimal_places=2)
     icono = models.CharField(max_length=100, null=True, blank=True)
     foto = models.ImageField(upload_to = 'servicios', null=True, blank=True)
     
@@ -47,8 +64,7 @@ class Servicio(models.Model):
 class Cita(models.Model):
     fecha_creacion = models.DateTimeField(auto_now=True)
     fecha = models.DateField()
-    hora = models.TimeField()
-    jornada = models.CharField(max_length=120)
+    hora = models.CharField(max_length=15, choices=horarios)
     persona = models.ForeignKey(Persona, on_delete=models.PROTECT)
     barbero = models.ForeignKey(Barbero, on_delete=models.PROTECT)
     servicios = models.ManyToManyField(Servicio, blank=True)

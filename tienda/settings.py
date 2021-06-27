@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'home',
     #'webservices',
     #'rest_framework',
+
 ]
 
 MIDDLEWARE = [
@@ -106,6 +107,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+#identifica o define el perfil de los usuarios
+AUTH_PROFILE_MODULE = ['home.perfil']
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/

@@ -10,6 +10,8 @@ urlpatterns = [
 
 path('',vista_inicio, name='inicio'),
 path('servicios/', vista_servicios, name = 'servicios'),
+path( 'index/', vista_index),
+
 
 #login
 path('login/',vista_login, name='vista_login'),
@@ -37,6 +39,10 @@ path('eliminar_servicio/<int:id_br>/',eliminar_servicio, name='eliminar_servicio
 
 #CLIENTE
 path('crear_cita/',agendar_cita, name='crear_cita'),
+
+#PRODUCTO
+path('crear_producto/',crear_producto,name='crear_producto')
+
 
 
 

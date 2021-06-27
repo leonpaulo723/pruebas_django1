@@ -1,16 +1,37 @@
 {% extends 'base.html' %} {% block contenido %}
 
-<center>
-    <h1>EDITAR_SERVICIO</h1>
-</center>
+<!-- slide section -->
+{% load static %}
+<section class="" data-stellar-background-ratio="0.5" style="background-color: black">
+    <div class="">
+        <img src="{% static '/images/banner.jpg' %}" alt="" height="" width="100%">
+        <div class="row align-items-center site-hero-inner justify-content-center">
+            <div class="col-md-8 text-center">
+                <div class="mb-5 element-animate">
+                    <!-- <img src="images/banner_text_1.png" alt="Image placeholder" class="img-md-fluid"> -->
+                    <h1 class="mb-4" style="color:white">Editar Servicio</h1>
+                    <p class="lead"></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END section -->
 
 
-<form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %} {{ form_serv.as_p}}
 
-    <input type="submit" value="editar">
+<br>
 
-</form>
+<div class="row align-items-center site-hero-inner justify-content-center">
+    <div class="col-md-8 text-center">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %} {{ form_serv.as_p}}
 
+            <input type="submit" value="editar">
+
+        </form>
+    </div>>
+</div>
 
 {% endblock %}

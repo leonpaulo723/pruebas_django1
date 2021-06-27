@@ -41,14 +41,26 @@
             </div>
             <div class=" col-md-6 pl-md-5 ">
                 <h3>{{p.nombre}}</h3>
-                <p class="lead ">Expert Barber</p>
+                <p class="lead ">BARBERO PROFESIONAL</p>
                 <p>{{p.descripcion}}</p>
 
 
                 {% if request.user.is_superuser %}
                 <p>
-                    <a href="{% url 'editar_barbero' id_br=p.id %}">EDITAR</a>
-                    <a href="{% url 'eliminar_barbero' id_br=p.id %}">ELIMINAR</a>
+                    <a href="{% url 'agregar_barbero' %}">Agregar_Barbero</a>
+                    <br>
+                    <a href="{% url 'editar_barbero' id_br=p.id %}">Editar Informacion</a>
+                    <br>
+                    <a href="{% url 'agregar_servicio' %}">Agregar_Servicio</a>
+                    <br>
+                    <a href="{% url 'crear_producto' %}">Crear_producto</a>
+
+
+
+
+
+
+                    <!--<a href="{% url 'eliminar_barbero' id_br=p.id %}">ELIMINAR</a>-->
                 </p>
                 {% endif %}
 
