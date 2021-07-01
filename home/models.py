@@ -17,6 +17,13 @@ horarios = (
     ("19:00 - 20:00", "19:00 - 20:00"),
 )
 
+estado_cita = (
+    ("terminada", "terminada"),
+    ("cancelado", "cancelado"),
+    ("agendado", "agendado"),
+
+
+)
 
 # Create your models here.
 class Producto(models.Model):
@@ -65,6 +72,7 @@ class Cita(models.Model):
     fecha_creacion = models.DateTimeField(auto_now=True)
     fecha = models.DateField()
     hora = models.CharField(max_length=15, choices=horarios)
+    estado_cita = models.CharField(max_length=50, default="agendado")
     persona = models.ForeignKey(Persona, on_delete=models.PROTECT)
     barbero = models.ForeignKey(Barbero, on_delete=models.PROTECT)
     servicios = models.ManyToManyField(Servicio, blank=True)

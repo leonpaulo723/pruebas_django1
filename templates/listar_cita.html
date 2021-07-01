@@ -1,0 +1,88 @@
+{% extends 'base.html' %} {% block contenido %}
+
+
+
+<!-- slide section -->
+{% load static %}
+<section class="" data-stellar-background-ratio="0.5" style="background-color: black">
+    <div class="">
+        <img src="{% static '/images/banner.jpg' %}" alt="" height="" width="100%">
+        <div class="row align-items-center site-hero-inner justify-content-center">
+            <div class="col-md-8 text-center">
+                <div class="mb-5 element-animate">
+                    <!-- <img src="images/banner_text_1.png" alt="Image placeholder" class="img-md-fluid"> -->
+                    <h1 class="mb-4" style="color:white">CONSULTAR_CITAS</h1>
+                    <p class="lead"></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END section -->
+
+<table>
+    <thead>
+        <tr>
+            <th>USUARIO</th>
+            <th>FECHA</th>
+            <th>HORA</th>
+            <th>BARBERO</th>
+            <th>ESTADO</th>
+            <th>TELEFONO</th>
+            <th>SERVICIOS</th>
+            <th></th>
+
+            {% if request.user.is_authenticated and request.user.is_superuser %}
+            <th>ACCIONES</th>
+            {% endif %}
+
+
+
+
+
+        </tr>
+
+    </thead>
+    <tbody>
+
+
+        {% for object in lista_1 %}
+
+        <tr>
+
+
+
+
+
+            <td>{{object.persona.user.username}}</td>
+
+            <td>{{object.fecha}}</td>
+
+            <td>{{object.hora}}</td>
+
+            <td>{{object.barbero}}</td>
+
+            <td>{{object.estado_cita}}</td>
+
+            <td>{{object.persona.telefono}}</td>
+
+
+
+
+            <td>{% for servicio in object.servicios.all %} {{servicio}} {%endfor%} </td>
+
+            {% if request.user.is_authenticated and request.user.is_superuser %}
+            <td>
+                <a href="{% url 'cancelar_cita' id_cita=object.id %}">CANCELAR CITA</a>
+                <a href="{% url 'terminar_cita' id_cita=object.id %}">SERVICIO REALIZADO</a>
+            </td>
+            {% endif %} {% endfor %}
+
+
+
+
+        </tr>
+    </tbody>
+</table>
+{% endblock contenido %}

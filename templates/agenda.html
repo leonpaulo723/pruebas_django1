@@ -41,23 +41,18 @@
                     {% csrf_token %} {{ formulario.as_p}}
                     <div class="row">
                         <div class="col-md-4 form-group">
-                            <label for="name">Nombre</label>
-                            <input type="text" class="form-control " name="{{form.nombre.name}}">
+                            <label for="name">Fecha</label>
+                            <input type="text" class="form-control " id="datetime" name="{{form.fecha.name}}">
                         </div>
                         <div class="col-md-4 form-group">
-                            <label for="phone">Telefono</label>
-                            <input type="text" id="phone" class="form-control ">
+                            <label for="phone">hora</label>
+                            <input type="text" class="form-control " name="{{form.hora.name}}" choices='horarios'>
                         </div>
                         <div class="col-md-4 form-group">
                             <label for="email">Email</label>
                             <input type="email" id="email" class="form-control ">
                         </div>
-                        <div class="col-md-4 form-group">
-                            <label for="fecha">Fecha</label>
-                            <!--<input type="email" id="email" class="form-control ">-->
-                            <input size="16" type="date" class="form-control" id="datetime">
 
-                        </div>
 
                     </div>
 

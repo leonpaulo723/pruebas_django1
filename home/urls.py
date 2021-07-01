@@ -41,8 +41,20 @@ path('eliminar_servicio/<int:id_br>/',eliminar_servicio, name='eliminar_servicio
 path('crear_cita/',agendar_cita, name='crear_cita'),
 
 #PRODUCTO
-path('crear_producto/',crear_producto,name='crear_producto')
+path('crear_producto/',crear_producto, name='crear_producto'),
 
+#LISTAR CITA LAS CITAS PARA EL ADMIN
+path('listar_cita/', listar_cita, name='listar_cita'),
+
+#LISTAR CITAS DEL CLIENTE
+path('citas_cliente/', citas_cliente, name='citas_cliente'),
+
+#SERVICIO REALIZADO
+path('terminar_cita/<int:id_cita>/', terminar_cita_vista, name='terminar_cita'),
+
+
+#CANCELAR CITA
+path('cancelar_cita/<int:id_cita>/', cancelar_cita_vista, name='cancelar_cita'),
 
 
 

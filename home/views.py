@@ -138,6 +138,42 @@ def eliminar_servicio (request, id_br):
     return redirect ('/equipo/')
 #<-----end_view----->
 
+# vista_listar_cita_admin
+def listar_cita (request):
+    lista_1 = Cita.objects.filter().order_by('-id')
+    #lista_2 = Persona.objects.filter().order_by('-id')
+    #lista_3 = User.objects.filter().order_by('-id')
+    return render(request, 'listar_cita.html', locals())
+
+
+# vista citas_cliente
+def citas_cliente (request):
+    lista_1 = Cita.objects.filter(persona__user=request.user).order_by('-id')
+    return render(request, 'listar_cita.html', locals())
+
+
+#terminar cita
+def terminar_cita_vista (request, id_cita):
+    cita= Cita.objects.get(id=id_cita)
+    cita.estado_cita = "terminada"
+    cita.save()
+    
+    return redirect("/listar_cita/")
+    
+
+
+
+#cancelar cita
+def cancelar_cita_vista (request, id_cita):
+    cita= Cita.objects.get(id=id_cita)
+    cita.estado_cita = "cancelado"
+    cita.save()
+    if request.user.is_superuser:
+        return redirect("/listar_cita/")
+    else:
+        return redirect("/citas_cliente/")
+        
+
 
 
     
@@ -151,8 +187,7 @@ def agendar_cita (request):
         form_cita = agregar_cita_form(request.POST, request.FILES)
         if form_cita.is_valid():
             f = form_cita.save(commit=False)
-            #realizar consultas de agenda
-            #usuario realizo una reserva antes de la cita
+                       
 
             #si el barbero esta disponible en el dia y hora
 
@@ -165,8 +200,7 @@ def agendar_cita (request):
 
     return render(request, 'crear_cita.html',locals())
 
-
-
+    
 #vista login
 def vista_login (request):
     usu = ""
