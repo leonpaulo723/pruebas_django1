@@ -25,12 +25,12 @@
     <thead>
         <tr>
             <th>USUARIO</th>
-            <th>FECHA</th>
-            <th>HORA</th>
-            <th>BARBERO</th>
-            <th>ESTADO</th>
-            <th>TELEFONO</th>
-            <th>SERVICIOS</th>
+            <th>FECHA </th>
+            <th>HORA </th>
+            <th>BARBERO </th>
+            <th>ESTADO </th>
+            <th>TELEFONO </th>
+            <th>SERVICIOS </th>
             <th></th>
 
             {% if request.user.is_authenticated and request.user.is_superuser %}
@@ -72,15 +72,13 @@
 
             <td>{% for servicio in object.servicios.all %} {{servicio}} {%endfor%} </td>
 
-            {% if request.user.is_authenticated and request.user.is_superuser %}
             <td>
+                {% if request.user.is_authenticated and request.user.is_superuser %}
+                <a href="{% url 'terminar_cita' id_cita=object.id %}">SERVICIO REALIZADO</a> {% endif %} {% if object.estado_cita == 'agendado' %}
                 <a href="{% url 'cancelar_cita' id_cita=object.id %}">CANCELAR CITA</a>
-                <a href="{% url 'terminar_cita' id_cita=object.id %}">SERVICIO REALIZADO</a>
+                <a href="{% url 'editar_cita' id_cita=object.id %}">EDITAR CITA</a> {% endif %} {% endfor %}
+
             </td>
-            {% endif %} {% endfor %}
-
-
-
 
         </tr>
     </tbody>

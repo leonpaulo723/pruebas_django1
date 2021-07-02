@@ -52,6 +52,10 @@ path('citas_cliente/', citas_cliente, name='citas_cliente'),
 #SERVICIO REALIZADO
 path('terminar_cita/<int:id_cita>/', terminar_cita_vista, name='terminar_cita'),
 
+#EDITAR CITA
+path('editar_cita/<int:id_cita>/', editar_cita_vista, name='editar_cita'),
+
+
 
 #CANCELAR CITA
 path('cancelar_cita/<int:id_cita>/', cancelar_cita_vista, name='cancelar_cita'),

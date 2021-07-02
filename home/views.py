@@ -140,13 +140,15 @@ def eliminar_servicio (request, id_br):
 
 # vista_listar_cita_admin
 def listar_cita (request):
-    lista_1 = Cita.objects.filter().order_by('-id')
-    #lista_2 = Persona.objects.filter().order_by('-id')
-    #lista_3 = User.objects.filter().order_by('-id')
+    if request.user.is_superuser:
+        lista_1 = Cita.objects.filter().order_by('-id')
+    else:
+        lista_1 = Cita.objects.filter(persona__user=request.user).order_by('-id')
+
     return render(request, 'listar_cita.html', locals())
 
 
-# vista citas_cliente
+# listar citas_cliente
 def citas_cliente (request):
     lista_1 = Cita.objects.filter(persona__user=request.user).order_by('-id')
     return render(request, 'listar_cita.html', locals())
@@ -161,8 +163,6 @@ def terminar_cita_vista (request, id_cita):
     return redirect("/listar_cita/")
     
 
-
-
 #cancelar cita
 def cancelar_cita_vista (request, id_cita):
     cita= Cita.objects.get(id=id_cita)
@@ -172,10 +172,21 @@ def cancelar_cita_vista (request, id_cita):
         return redirect("/listar_cita/")
     else:
         return redirect("/citas_cliente/")
+
+#editar cita
+def editar_cita_vista (request, id_cita):
+
+    var3 = Cita.objects.get(id=id_cita)
+    if request.method == "POST":
+        formulario = agregar_cita_form(request.POST, instance=var3)
+        if formulario.is_valid():
+            var3 = formulario.save()
+            return redirect ('/listar_cita/')
+    else:
+        formulario = agregar_cita_form(instance = var3)
+
+    return render(request, 'crear_cita.html',locals())
         
-
-
-
     
 #vistas CLientes
 @login_required (login_url = '/login/')
