@@ -9,7 +9,7 @@
             <div class="col-md-8 text-center">
                 <div class="mb-5 element-animate">
                     <!-- <img src="images/banner_text_1.png" alt="Image placeholder" class="img-md-fluid"> -->
-                    <h1 class="mb-4" style="color:white">EQUIPO</h1>
+                    <h1 class="mb-5" style="color:white">EQUIPO</h1>
                     <p class="lead"></p>
                 </div>
 
@@ -47,19 +47,12 @@
 
                 {% if request.user.is_superuser %}
                 <p>
-                    <a href="{% url 'agregar_barbero' %}">Agregar_Barbero</a>
-                    <br>
-                    <a href="{% url 'editar_barbero' id_br=p.id %}">Editar Informacion</a>
-                    <br>
-                    <a href="{% url 'agregar_servicio' %}">Agregar_Servicio</a>
-                    <br>
-                    <a href="{% url 'crear_producto' %}">Crear_producto</a>
-                    <br>
-                    <a href="{% url 'listar_cita' %}">Consultar_cita</a>
+                    <center><a href="/agregar_barbero/ " class="btn btn-black ">Agregar Barbero</a></center>
 
+                    <br>
+                    <center><a href="/crear_producto/ " class="btn btn-black "> Crear Producto</a></center>
 
-
-
+                    <br>
 
 
                     <!--<a href="{% url 'eliminar_barbero' id_br=p.id %}">ELIMINAR</a>-->

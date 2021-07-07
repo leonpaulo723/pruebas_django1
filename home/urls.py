@@ -1,12 +1,7 @@
 from django.urls import path
 from .views import *
 
-
-
-
 urlpatterns = [
-
-
 
 path('',vista_inicio, name='inicio'),
 path('servicios/', vista_servicios, name = 'servicios'),
@@ -59,6 +54,9 @@ path('editar_cita/<int:id_cita>/', editar_cita_vista, name='editar_cita'),
 
 #CANCELAR CITA
 path('cancelar_cita/<int:id_cita>/', cancelar_cita_vista, name='cancelar_cita'),
+
+#PRODUCTOS
+path('productos', vista_productos, name='productos'),
 
 
 

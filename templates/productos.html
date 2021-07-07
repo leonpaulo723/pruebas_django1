@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {% block contenido %}
+
+<!-- slide section -->
+{% load static %}
+<section class="" data-stellar-background-ratio="0.5" style="background-color: black">
+    <div class="">
+        <img src="{% static '/images/banner.jpg' %}" alt="" height="" width="100%">
+        <div class="row align-items-center site-hero-inner justify-content-center">
+            <div class="col-md-8 text-center">
+                <div class="mb-5 element-animate">
+                    <!-- <img src="images/banner_text_1.png" alt="Image placeholder" class="img-md-fluid"> -->
+                    <h1 class="mb-4" style="color:white">PRODUCTOS</h1>
+                    <p class="lead"></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END section -->
+
+
+
+<section class="slider-wrap site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 element-animate ">
+                {% for object in productos %}
+                <a href="/productos/" class="img-bg" style=="background-image: url(/media/{{ object.foto }})">
+                    <div class="text">
+                        <span class="icon ion-ios-videocam"></span>
+                        <h2>{{object.nombre}}</h2>
+                        <p>Continue reading...</p>
+                    </div>
+                    {% endfor %}
+                </a>
+            </div>
+
+
+
+
+            <div class="row element-animate pt-5">
+                <div class="col-6 text-left mb-3"><a href="#" class="btn btn-primary">Prev</a></div>
+                <div class="col-6 text-right"><a href="#" class="btn btn-primary">Next</a></div>
+            </div>
+        </div>
+</section>
+<!-- END section -->
+
+{% endblock %}

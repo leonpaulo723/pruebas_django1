@@ -30,6 +30,7 @@
                 <img src="/media/{{ object.foto }}" alt="Corte Clasico" class="img-fluid">
 
 
+
             </div>
             <div class=" col-md-6 pl-md-5 ">
                 <h3>{{ object.nombre }} </h3>
@@ -39,8 +40,13 @@
                 <p>{{ object.descripcion }}</p>
                 <h3>$ {{ object.precio }}
                 </h3>
-                <hr>
+                <hr> {% if request.user.is_superuser %}
+                <center><a href="/agregar_servicio/ " class="btn btn-black ">Agregar servicio</a></center>
+                <br> {% else %}
                 <center><a href="/crear_cita/ " class="btn btn-black ">Agenda tu cita</a></center>
+                {% endif %}
+
+
 
             </div>
         </div>

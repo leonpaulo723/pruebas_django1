@@ -250,3 +250,6 @@ def crear_producto (request):
     
 
 
+#vista_productos
+def vista_productos(request):
+    return render(request,'productos.html')
